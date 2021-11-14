@@ -12,7 +12,7 @@ import axios from 'axios';
 /repos/:owner/:name/issues/<number>/labels
 */
 
-axios.get("/.netlify/git/github/contents/")
+axios.get("https://api.github.com/TristinCodingham/coders-cms/contents")
     .then(res => console.log(res));
 export default function GithubContentsAPI() {
     return (
