@@ -1,4 +1,5 @@
 import React from 'react';
+import GithubContentsAPI from './api/contents/GithubContentsAPI';
 
 function App() {
   //document.title = ""; // Defined by user
@@ -6,6 +7,7 @@ function App() {
   return (
     <React.Fragment>
       {/* The website built with coders-cms. Should be pulled from an API */}
+      <GithubContentsAPI />
     </React.Fragment>
   );
 }
