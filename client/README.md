@@ -1,0 +1,1 @@
+user -> clone repo -> branch 'cms' -> start -> IDEless aaproach -> Edit content/markup -> pull/push capabilitites -> CI/Build new files -> View Netlify deployed site
