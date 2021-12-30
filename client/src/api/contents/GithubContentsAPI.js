@@ -1,9 +1,5 @@
 import React from 'react';
-
 import axios from 'axios';
-
-import HomePage from '../../ui/components/pages/public/HomePage.md';
-import ReactMarkdown from 'react-markdown';
 
 /*
 /repos/:owner/:name/git/
@@ -15,28 +11,30 @@ import ReactMarkdown from 'react-markdown';
 /repos/:owner/:name/issues/<number>/labels
 */
 
-axios.get("https://api.github.com/repos/TristinCodingham/coders-cms/contents")
-    .then(res => console.log(res));
+export default function GithubContentsAPI() {
+    const [state, setState] = React.useState(null);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [isError, setIsError] = React.useState(false);
 
-export default class GithubContentsAPI extends React.Component {
-    constructor(props) {
-        super(props)
+    function getData() {
+        axios.get("https://api.github.com/repos/TristinCodingham/coders-cms/git/trees/c56bc2c758520931f033ae53199f0c03895c821b")
+            .then(data => setState(data))
+            .catch(err => setIsError(err))
+            .finally(() => setIsLoading(false));
+    }
 
-        this.state = { md: null }
-    }
-    componentDidMount() {
-        fetch(HomePage)
-            .then(res => res.text())
-            .then(data => {
-                console.log('data', data)
-                this.setState({
-                    md: data
-                });
-            })
-    }
-    render() {
-        return(
-            <ReactMarkdown children={this.state.md} />
-        )
-    }
+    React.useEffect(() => {
+        if(isLoading) getData();
+    }, [isLoading]);
+
+    if(isLoading) return "Loading";
+    if(isError) return "Error";
+
+    console.log(state)
+    return (
+        <div>
+            
+        </div>
+    )
 }
+
