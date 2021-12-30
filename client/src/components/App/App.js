@@ -1,9 +1,6 @@
 import React from 'react';
 
-import { Routes, Route } from 'react-router-dom';
-
-import GithubContentsAPI from './api/contents/GithubContentsAPI';
-import Admin from './ui/components/pages/private/Admin';
+import GithubContentsAPI from '../../api/contents/GithubContentsAPI';
 
 function App() {
   //document.title = ""; // Defined by user
