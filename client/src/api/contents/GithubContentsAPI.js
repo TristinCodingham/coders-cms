@@ -17,7 +17,7 @@ export default function GithubContentsAPI() {
     const [isError, setIsError] = React.useState(false);
 
     function getData() {
-        axios.get("https://api.github.com/repos/TristinCodingham/coders-cms/git/trees/c56bc2c758520931f033ae53199f0c03895c821b")
+        axios.get("/.netlify/git/github/contents/")
             .then(data => setState(data))
             .catch(err => setIsError(err))
             .finally(() => setIsLoading(false));
